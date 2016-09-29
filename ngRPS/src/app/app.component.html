@@ -1,24 +1,23 @@
 <md-toolbar color="primary">
   <h1> {{title}} </h1>  
-  SCORE: 
-  <!--<md-toolbar-row>-->
-  <!--  <span>New Game</span>-->
-  <!--</md-toolbar-row>-->
-  
-  <!--<md-toolbar-row>-->
-  <!--  <span>Quit</span>-->
-  <!--</md-toolbar-row>-->
+  <span class="score"> SCORE: </span> 
 </md-toolbar>
 
+<div>
+  <button md-fab>
+    ✊🏽
+    <!--<md-icon class="md-24">fiber_manual_record</md-icon>-->
+  </button>
+  <button md-fab>
+    📰
+    <!--<md-icon class="md-24">insert_drive_file</md-icon>-->
+  </button>
+  <button md-fab>
+    ✂
+    <!--<md-icon class="md-24">content_cut</md-icon>-->
+  </button>
+</div>
 
-<button md-fab>
-   <md-icon class="md-24">fiber_manual_record</md-icon>
-</button>
-<button md-fab>
-   <md-icon class="md-24">insert_drive_file</md-icon>
-</button>
-<button md-fab>
-   <md-icon class="md-24">content_cut</md-icon>
-</button>
-
-<button md-raised-button [disabled]="isDisabled">SHOOT</button>
+<div>
+  <button md-raised-button disabled>SHOOT</button>
+</div>

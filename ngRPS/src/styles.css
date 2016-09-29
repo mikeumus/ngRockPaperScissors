@@ -1,3 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import '~@angular/material/core/theming/prebuilt/deeppurple-amber.css';
+
+html{background-color: #bda2ff;}
+body{
+  padding: 3px;
+  margin: 0px;
+}
+
+.score{
+  position: absolute;
+  right: 101px;
+}
