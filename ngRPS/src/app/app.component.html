@@ -4,17 +4,26 @@
 </md-toolbar>
 
 <div class="choices">
-  <button class="choice-fab-btn rock-choice-btn" md-fab (click)="setChoice('rock')">
+  <button class="choice-fab-btn rock-choice-btn" md-fab
+    (click)="setChoice('rock')"
+    [disabled]="player.choice === 'rock'"
+  >
     ✊🏽
   </button>
-  <button class="choice-fab-btn paper-choice-btn" md-fab>
+  <button class="choice-fab-btn paper-choice-btn" md-fab
+    (click)="setChoice('paper')"
+    [disabled]="player.choice === 'paper'"
+  >
     📰
   </button>
-  <button class="choice-fab-btn scissors-choice-btn" md-fab>
+  <button class="choice-fab-btn scissors-choice-btn" md-fab
+    (click)="setChoice('scissors')"
+    [disabled]="player.choice === 'scissors'"
+  >
     ✂
   </button>
 </div>
 
 <div class="txt-align-center">
-  <button class="shoot-btn" md-raised-button [disabled]="loaded">SHOOT</button>
+  <button class="shoot-btn" md-raised-button [disabled]="!player.loaded">SHOOT</button>
 </div>
