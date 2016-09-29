@@ -2,13 +2,34 @@
 
 @import '~@angular/material/core/theming/prebuilt/deeppurple-amber.css';
 
-html{background-color: #bda2ff;}
-body{
+html { background-color: #bda2ff; }
+body {
   padding: 3px;
   margin: 0px;
 }
 
-.score{
+.txt-align-center{
+  text-align: center;
+}
+
+.score {
   position: absolute;
   right: 101px;
+}
+
+.choices {
+  text-align: center;
+  margin: 77px auto 33px;
+}
+
+.choice-fab-btn {
+  width: 77px !important;
+  height: 77px !important;
+  margin: 16px !important;
+  font-size: 32px !important;
+}
+
+.shoot-btn{
+  width: 18%;
+  height: 55px;
 }
