@@ -4,17 +4,39 @@
 
 html { background-color: #bda2ff; }
 body {
-  padding: 3px;
   margin: 0px;
 }
-
+.error{
+  text-align: center;
+  margin: 0 auto;
+  background: #41226b;
+  padding: 33px;
+  text-transform: uppercase;
+  font-weight: 900;
+  color: red;
+  font-family: monospace;
+  font-size: 23px;
+}
+.text-stroke{
+   -webkit-text-stroke: 1px black;
+   color: white;
+   text-shadow:
+       3px 3px 0 #000,
+     -1px -1px 0 #000,  
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+       1px 1px 0 #000;
+}
+md-toolbar.md-primary{
+  padding: 13px 13px 16px 40px;
+}
 .txt-align-center{
   text-align: center;
 }
 
 .score {
   position: absolute;
-  right: 101px;
+  right: 77px;
 }
 
 .choices {

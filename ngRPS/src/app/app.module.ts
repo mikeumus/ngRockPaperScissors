@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpModule, JsonpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
+import { PlayerService } from './player.service';
 
 import { AppComponent } from './app.component';
 
@@ -14,9 +15,10 @@ import { AppComponent } from './app.component';
     BrowserModule,
     FormsModule,
     HttpModule,
+    JsonpModule,
     MaterialModule.forRoot()
   ],
-  providers: [],
+  providers: [PlayerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

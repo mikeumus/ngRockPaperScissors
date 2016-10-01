@@ -15,13 +15,13 @@ router.post("/match", function(req, res, next){
 
     if (!_.contains(['rock', 'paper', 'scissors'], playerChoice)) {
       status = 400;
-      body = { message: "'choice' param must be rock, paper, or scissors" }
+      body = { message: "'choice' param must be rock, paper, or scissors" };
       return res.status(status).json(body);
     }
 
     // Send 500 ISE randomly 1 out of 10 times
     if (_.random(1,10) === 1) {
-      return res.status(500).json({message: "Internal Server Error"})
+      return res.status(500).json({message: "Internal Server Error"});
     }
 
     var computerChoice = _.sample(['rock', 'paper', 'scissors']);
@@ -31,9 +31,9 @@ router.post("/match", function(req, res, next){
       playerChoice: playerChoice,
       computerChoice: computerChoice,
       result: result
-    })
-  }, latency)
-})
+    });
+  }, latency);
+});
 
 
 

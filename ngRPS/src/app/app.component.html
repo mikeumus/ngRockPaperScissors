@@ -3,6 +3,8 @@
   <span class="score"> &nbsp;  SCORE: 🤖  &nbsp;  ][  &nbsp;  👧🏽</span> 
 </md-toolbar>
 
+<div class="error" *ngIf="errorMessage"> {{errorMessage}} </div>
+
 <div class="choices">
   <button class="choice-fab-btn rock-choice-btn" md-fab
     (click)="setChoice('rock')"
@@ -25,5 +27,10 @@
 </div>
 
 <div class="txt-align-center">
-  <button class="shoot-btn" md-raised-button [disabled]="!player.loaded">SHOOT</button>
-</div>
+  <button class="shoot-btn" md-raised-button 
+    (click)="match(player.choice)" 
+    [disabled]="!player.loaded"
+    color="primary" 
+  > <h2 style="margin: 4px 0 0;"> SHOOT </h2></button>
+  
+</div> <!-- <app-root> component closing -->
