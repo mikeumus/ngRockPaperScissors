@@ -13,9 +13,20 @@
 
 <div class="arena">
   
-  <div class="avatar"> 🤖 </div>
-  <div class="avatar match-result" *ngIf="player.matchResult"> {{player.matchResult}} </div>
-  <div class="avatar"> 👧🏽 </div>
+  <div class="avatar">
+    <span [ngClass]="{bounce: gameState === 2}" class="robo-fist"> ✊🏼</span>   
+     🤖 
+  </div>
+  <div class="avatar match-result" [ngSwitch]="gameState">
+    <span *ngSwitchCase="0"> CHOOSE</span> 
+    <span *ngSwitchCase="1"> {{player.choice}} </span> 
+    <span *ngSwitchCase="2"> {{player.countdownMsg}} </span> 
+    <span *ngSwitchCase="3"> {{player.choice}} {{player.matchResult}} </span> 
+  </div>
+  <div class="avatar">
+    <span [ngClass]="{bounce: gameState === 2}" class="her-fist"> ✊🏽</span>   
+     👧🏽 
+  </div>
   
 </div>
 
@@ -40,12 +51,23 @@
   </button>
 </div>
 
-<div class="txt-align-center">
-  <button class="shoot-btn" md-raised-button 
-    (click)="match(player.choice)" 
+<div class="txt-align-center" [ngSwitch]="gameState">
+  
+  <button *ngSwitchCase="1" class="shoot-btn" md-raised-button 
+    (click)="match(player.choice); countdown();" 
     [disabled]="!player.loaded"
     color="primary" 
+     
   > 
-    <h2 style="margin: 4px 0 0;"> SHOOT </h2>
+    <h2> SHOOT </h2>
   </button>
+  
+  <button *ngSwitchCase="3" class="shoot-btn" md-raised-button 
+    (click)="gameState=0" 
+    [disabled]="!player.loaded"
+    color="warn" 
+  >
+    <h2> PLAY AGAIN ? </h2>
+  </button>
+  
 </div> <!-- <app-root> component closing -->
