@@ -1,9 +1,23 @@
 <md-toolbar color="primary">
   <h1> {{title}} </h1>  
-  <span class="score"> &nbsp;  SCORE: 🤖  &nbsp;  ][  &nbsp;  👧🏽</span> 
+  <span class="score">
+     &nbsp;  SCORE: 🤖  
+    <span md-tooltip="Robot Wins" tooltip-position="below"> {{player.loses}} </span> ]
+    <span md-tooltip="Match Tie" tooltip-position="below"> {{player.ties}} </span>
+    [  <span md-tooltip="Your Wins" tooltip-position="below"> {{player.wins}} </span>
+    👧🏽
+  </span> 
 </md-toolbar>
 
 <div class="error" *ngIf="errorMessage"> {{errorMessage}} </div>
+
+<div class="arena">
+  
+  <div class="error" *ngIf="errorMessage"> {{player.matchResult}} </div>
+  <div class="avatar"> 🤖 </div>
+  <div class="avatar"> 👧🏽 </div>
+  
+</div>
 
 <div class="choices">
   <button class="choice-fab-btn rock-choice-btn" md-fab
@@ -31,6 +45,7 @@
     (click)="match(player.choice)" 
     [disabled]="!player.loaded"
     color="primary" 
-  > <h2 style="margin: 4px 0 0;"> SHOOT </h2></button>
+  > 
+  <h2 style="margin: 4px 0 0;"> SHOOT </h2></button>
   
 </div> <!-- <app-root> component closing -->

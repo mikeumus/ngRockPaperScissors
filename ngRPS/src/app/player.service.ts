@@ -11,20 +11,10 @@ export class PlayerService {
   
   constructor (private http: Http) { }
   
-  
-  // getMatches (): Promise<Player[]> {
-  //   return this.http.get(this.rpsEndpointUrl)
-  //                   .toPromise()
-  //                   .then(response => response.json().data as Match[])
-  //                   .catch(this.handleError);
-  //                 // .map(this.extractData)
-  //                 // .catch(this.handleError);
-  // }
-  
   private extractData(res: Response) {
     let body = res.json();
     console.log(body);
-    return body.data || { };
+    return body || { };
   }
   
   private handleError(error: any): Observable<any> {
@@ -33,8 +23,7 @@ export class PlayerService {
   }
 
   public playerMoves (move: string): Observable<Match> {
-    // let body = JSON.stringify({ choice: move });
-    let body = `choice=${move}`;
+    let body = JSON.stringify({ choice: move });
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
     
