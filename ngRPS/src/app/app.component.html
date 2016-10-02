@@ -1,5 +1,5 @@
 <md-toolbar color="primary">
-  <h1> {{title}} </h1>  
+  <h2> {{title}} </h2>  
   <span class="score">
      &nbsp;  SCORE: 🤖  
     <span md-tooltip="Robot Wins" tooltip-position="below"> {{player.loses}} </span> ]
@@ -13,8 +13,8 @@
 
 <div class="arena">
   
-  <div class="error" *ngIf="errorMessage"> {{player.matchResult}} </div>
   <div class="avatar"> 🤖 </div>
+  <div class="avatar match-result" *ngIf="player.matchResult"> {{player.matchResult}} </div>
   <div class="avatar"> 👧🏽 </div>
   
 </div>
@@ -46,6 +46,6 @@
     [disabled]="!player.loaded"
     color="primary" 
   > 
-  <h2 style="margin: 4px 0 0;"> SHOOT </h2></button>
-  
+    <h2 style="margin: 4px 0 0;"> SHOOT </h2>
+  </button>
 </div> <!-- <app-root> component closing -->

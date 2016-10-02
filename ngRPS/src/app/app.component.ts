@@ -13,7 +13,7 @@ export class AppComponent {
   errorMessage: string;
   public matches: Array<Match> = [];
   mode = 'Observable';
-  title = '🆖 ✊🏽Rock 📰Paper ✂Scissors';
+  title = '🆖 R✊🏽ck P📰per S✂issors';
 
   constructor(private playerService: PlayerService){}
   
@@ -22,7 +22,8 @@ export class AppComponent {
     choice: "",
     wins: 0,
     loses: 0,
-    ties: 0
+    ties: 0,
+    matchResult: "CHOOSE"
   }
   
   match(move: string) {
@@ -34,10 +35,12 @@ export class AppComponent {
   }
   
   processMatch(matchNow) {
+    this.errorMessage = "";
     matchNow => this.matches.push(matchNow);
     matchNow.result === "win" ? this.player.wins++ : 
       matchNow.result === "lose" ? this.player.loses++ :
         this.player.ties++;
+    this.player.matchResult = matchNow.result;
   }
   
   setChoice(choice: string) { 

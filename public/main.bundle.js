@@ -44660,13 +44660,14 @@ var AppComponent = (function () {
         this.playerService = playerService;
         this.matches = [];
         this.mode = 'Observable';
-        this.title = '🆖 ✊🏽Rock 📰Paper ✂Scissors';
+        this.title = '🆖 R✊🏽ck P📰per S✂issors';
         this.player = {
             loaded: false,
             choice: "",
             wins: 0,
             loses: 0,
-            ties: 0
+            ties: 0,
+            matchResult: "CHOOSE"
         };
     }
     AppComponent.prototype.match = function (move) {
@@ -44679,10 +44680,12 @@ var AppComponent = (function () {
     };
     AppComponent.prototype.processMatch = function (matchNow) {
         var _this = this;
+        this.errorMessage = "";
         (function (matchNow) { return _this.matches.push(matchNow); });
         matchNow.result === "win" ? this.player.wins++ :
             matchNow.result === "lose" ? this.player.loses++ :
                 this.player.ties++;
+        this.player.matchResult = matchNow.result;
     };
     AppComponent.prototype.setChoice = function (choice) {
         console.log("Players Choice: ", this.player.choice);
@@ -67266,7 +67269,7 @@ metadata.exp({metadata: function metadata(metadataKey, metadataValue){
 /* 693 */
 /***/ function(module, exports) {
 
-module.exports = "<md-toolbar color=\"primary\">\n  <h1> {{title}} </h1>  \n  <span class=\"score\">\n     &nbsp;  SCORE: 🤖  \n    <span md-tooltip=\"Robot Wins\" tooltip-position=\"below\"> {{player.loses}} </span> ]\n    <span md-tooltip=\"Match Tie\" tooltip-position=\"below\"> {{player.ties}} </span>\n    [  <span md-tooltip=\"Your Wins\" tooltip-position=\"below\"> {{player.wins}} </span>\n    👧🏽\n  </span> \n</md-toolbar>\n\n<div class=\"error\" *ngIf=\"errorMessage\"> {{errorMessage}} </div>\n\n<div class=\"choices\">\n  <button class=\"choice-fab-btn rock-choice-btn\" md-fab\n    (click)=\"setChoice('rock')\"\n    [disabled]=\"player.choice === 'rock'\"\n  >\n    ✊🏽\n  </button>\n  <button class=\"choice-fab-btn paper-choice-btn\" md-fab\n    (click)=\"setChoice('paper')\"\n    [disabled]=\"player.choice === 'paper'\"\n  >\n    📰\n  </button>\n  <button class=\"choice-fab-btn scissors-choice-btn\" md-fab\n    (click)=\"setChoice('scissors')\"\n    [disabled]=\"player.choice === 'scissors'\"\n  >\n    ✂\n  </button>\n</div>\n\n<div class=\"txt-align-center\">\n  <button class=\"shoot-btn\" md-raised-button \n    (click)=\"match(player.choice)\" \n    [disabled]=\"!player.loaded\"\n    color=\"primary\" \n  > <h2 style=\"margin: 4px 0 0;\"> SHOOT </h2></button>\n  \n</div> <!-- <app-root> component closing -->\n";
+module.exports = "<md-toolbar color=\"primary\">\n  <h2> {{title}} </h2>  \n  <span class=\"score\">\n     &nbsp;  SCORE: 🤖  \n    <span md-tooltip=\"Robot Wins\" tooltip-position=\"below\"> {{player.loses}} </span> ]\n    <span md-tooltip=\"Match Tie\" tooltip-position=\"below\"> {{player.ties}} </span>\n    [  <span md-tooltip=\"Your Wins\" tooltip-position=\"below\"> {{player.wins}} </span>\n    👧🏽\n  </span> \n</md-toolbar>\n\n<div class=\"error\" *ngIf=\"errorMessage\"> {{errorMessage}} </div>\n\n<div class=\"arena\">\n  \n  <div class=\"avatar\"> 🤖 </div>\n  <div class=\"avatar match-result\" *ngIf=\"player.matchResult\"> {{player.matchResult}} </div>\n  <div class=\"avatar\"> 👧🏽 </div>\n  \n</div>\n\n<div class=\"choices\">\n  <button class=\"choice-fab-btn rock-choice-btn\" md-fab\n    (click)=\"setChoice('rock')\"\n    [disabled]=\"player.choice === 'rock'\"\n  >\n    ✊🏽\n  </button>\n  <button class=\"choice-fab-btn paper-choice-btn\" md-fab\n    (click)=\"setChoice('paper')\"\n    [disabled]=\"player.choice === 'paper'\"\n  >\n    📰\n  </button>\n  <button class=\"choice-fab-btn scissors-choice-btn\" md-fab\n    (click)=\"setChoice('scissors')\"\n    [disabled]=\"player.choice === 'scissors'\"\n  >\n    ✂\n  </button>\n</div>\n\n<div class=\"txt-align-center\">\n  <button class=\"shoot-btn\" md-raised-button \n    (click)=\"match(player.choice)\" \n    [disabled]=\"!player.loaded\"\n    color=\"primary\" \n  > \n    <h2 style=\"margin: 4px 0 0;\"> SHOOT </h2>\n  </button>\n</div> <!-- <app-root> component closing -->\n";
 
 /***/ },
 /* 694 */
