@@ -9,15 +9,19 @@
   </span> 
 </md-toolbar>
 
-<div class="error" *ngIf="errorMessage"> {{errorMessage}} </div>
+<div class="error" *ngIf="errorStatus === 500"> 
+  <span> 😴⌛ The server had to take a break. It'll return in a second. Please PLAY again. </span>
+</div>
+<div class="error" *ngIf="errorStatus === 400"> 
+  <span> Please choose from (✊) Rock,  (📰) Paper or (✂) Scissors and press "SHOOT". </span>
+</div>
 
 <div class="arena">
-  
   <div class="avatar">
     <span [ngClass]="{bounce: gameState === 2}" class="robo-fist"> ✊🏼</span>   
      🤖 
   </div>
-  <div class="avatar match-result" [ngSwitch]="gameState">
+  <div class="avatar match-result" [ngSwitch]="gameState" *ngIf="errorStatus !== (500 || 400)">
     <span *ngSwitchCase="0"> CHOOSE</span> 
     <span *ngSwitchCase="1"> {{player.choice}} </span> 
     <span *ngSwitchCase="2"> {{player.countdownMsg}} </span> 
@@ -27,7 +31,6 @@
     <span [ngClass]="{bounce: gameState === 2}" class="her-fist"> ✊🏽</span>   
      👧🏽 
   </div>
-  
 </div>
 
 <div class="choices">

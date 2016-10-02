@@ -10,7 +10,7 @@ import { Match } from './match';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  errorMessage: string;
+  errorStatus: number;
   public matches: Array<Match> = [];
   mode = 'Observable';
   title = '🆖 Rock Paper S✂issors';
@@ -33,16 +33,11 @@ export class AppComponent {
     this.playerService.playerMoves(move)
                     .subscribe(
                       matchNow => this.processMatch(matchNow),
-                      error =>  this.processError(error);
-  }
-  
-  private processError(error) {
-    debugger;
-    this.errorMessage = <any>error);
+                      error => this.errorStatus = <any>error.status);
   }
   
   private processMatch(matchNow) {
-    this.errorMessage = "";
+    this.errorStatus = 0;
     matchNow => this.matches.push(matchNow);
     matchNow.result === "win" ? this.player.wins++ : 
       matchNow.result === "lose" ? this.player.loses++ :
@@ -53,14 +48,14 @@ export class AppComponent {
   
   public countdown() {
     this.gameState = 2;
-    let rps = ["ROCK", "PAPER", "SCISSORS", "SHOOT", ""];
+    let rps = ["ROCK", "PAPER", "SCISSORS", "SHOOT !", ""];
     let offset = 0;
     var countdownPromise = new Promise((resolve) => {
       for(let i=0; i < rps.length; i++) {
         setTimeout(() => {
           this.player.countdownMsg = rps[i];
-          if (rps[i] == "") {resolve('Success!')};
-        },offset += 505);
+          if (rps[i] === "") {resolve()};
+        },offset += 404);
       }
     });
     countdownPromise.then(() => {
