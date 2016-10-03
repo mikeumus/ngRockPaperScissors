@@ -18,7 +18,7 @@
 
 <div class="arena">
   <div class="avatar">
-    <span [ngClass]="{bounce: gameState === 2}" class="robo-fist"> ✊🏼</span>   
+    <!--<span [ngClass]="{bounce: gameState === 2}" class="robo-fist"> ✊🏼</span>   -->
      🤖 
   </div>
   <div class="avatar match-result" [ngSwitch]="gameState" *ngIf="errorStatus !== (500 || 400)">
@@ -28,7 +28,7 @@
     <span *ngSwitchCase="3"> {{player.choice}} {{player.matchResult}} </span> 
   </div>
   <div class="avatar">
-    <span [ngClass]="{bounce: gameState === 2}" class="her-fist"> ✊🏽</span>   
+    <!--<span [ngClass]="{bounce: gameState === 2}" class="her-fist"> ✊🏽</span>   -->
      👧🏽 
   </div>
 </div>
