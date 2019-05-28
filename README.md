@@ -44,6 +44,3 @@ All front end assets can be found in the `public` directory. Please use a Angula
 
 * Your application should deal with server errors gracefully.
 
-## Questions?
-
-If you have any questions while working on the test, feel free to contact Anthony Sgueglia <anthony@domandtom.com>.
